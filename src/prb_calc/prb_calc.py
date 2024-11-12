@@ -1,13 +1,16 @@
 from math import ceil
+from src.prb_calc import mcs_tables_5_1_3_1
+from src.prb_calc import bw
+from src.prb_calc import symbol_table
 
 # Computes the maximum speed (in bps) for a given cell
 def to_bps(
         is_uplink: bool,
-        mimo: int, 
         mcs: int, 
-        scaling_factor: float, 
         numerology: int, 
         bandwidth: int, 
+        scaling_factor: float = 1.0, 
+        mimo: int = 1, 
         symbol_format: int = 5, 
         is_tdd: bool = True, 
         use_flex_sym: bool = True, 
@@ -59,5 +62,5 @@ def to_prb(
         use_flex_sym: bool = True, 
         mcs_table: int = 0
         ) -> int:
-    total_speed: float = to_bps(is_uplink, mimo, mcs, scaling_factor, numerology, bandwidth, symbol_format=symbol_format, is_tdd=is_tdd, use_flex_sym=use_flex_sym, mcs_table=mcs_table)
-    return (speed/total_speed) // 100
+    total_speed: float = to_bps(is_uplink, mcs, numerology, bandwidth, mimo=mimo, scaling_factor=scaling_factor, symbol_format=symbol_format, is_tdd=is_tdd, use_flex_sym=use_flex_sym, mcs_table=mcs_table)
+    return ceil((speed/total_speed) / 100)
