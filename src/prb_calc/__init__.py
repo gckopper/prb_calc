@@ -302,4 +302,12 @@ def to_prb(
         mcs_table: int = 0
         ) -> int:
     total_speed: float = to_bps(is_uplink, mcs, numerology, bandwidth, mimo=mimo, scaling_factor=scaling_factor, symbol_format=symbol_format, is_tdd=is_tdd, use_flex_sym=use_flex_sym, mcs_table=mcs_table)
-    return ceil((speed/total_speed) / 100)
+    if total_speed == 0.0:
+        return 0
+    return ceil((speed/total_speed) * 100.0)
+
+# Computes the latency (in miliseconds) for each slot
+def latency(
+    numerology: int, 
+    ) -> float:
+    return 1 / (2**numerology)
