@@ -1,15 +1,15 @@
 [project]
 name = "prb_calc"
-version = "1.0.0"
+version = "1.0.1"
 authors = [
   { name="gckopper", email="41166074+gckopper@users.noreply.github.com" },
 ]
 description = "A small package to calculate the ratio of PRBs required to achieve a given speed"
 readme = "README.md"
 requires-python = ">=3.8"
+license = { file = "The Unlicense" }
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: The Unlicense",
     "Operating System :: OS Independent",
 ]
 
