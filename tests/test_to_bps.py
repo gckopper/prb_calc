@@ -1,5 +1,5 @@
 import unittest
-from src.prb_calc.prb_calc import to_bps
+from src.prb_calc import to_bps
 
 class ToBPSTestCase(unittest.TestCase):
     def test_downlink_tdd_no_sym(self):
